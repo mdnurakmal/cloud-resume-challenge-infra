@@ -7,4 +7,4 @@
 
 
 [![Run on Google
-Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/mdnurakmal/text-to-speech-cloud-run.git)
+Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/mdnurakmal/cloud-resume-challenge-infra.git)
