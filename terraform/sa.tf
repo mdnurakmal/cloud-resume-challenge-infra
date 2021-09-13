@@ -1,6 +1,6 @@
 # Create a service account
 resource "google_service_account" "cloud_resume_challenge_worker" {
-  account_id   = "cloud-resume-challenge-worker-id"
+  account_id   = "crc-worker-id"
   display_name = "Cloud Resume Challenge Worker"
 }
 
@@ -13,7 +13,7 @@ resource "google_project_iam_binding" "service_permissions" {
 }
 
 resource "google_service_account_key" "SA_key" {
-  service_account_id = google_service_account.cloud-resume-challenge-worker-id.name
+  service_account_id = google_service_account.crc-worker-id.name
   public_key_type    = "TYPE_X509_PEM_FILE"
    depends_on = [google_project_iam_binding.service_permissions]
 }
