@@ -39,7 +39,7 @@ return_value=$?
 if [[ $return_value == 0 ]] 
 then
     echo "deleting existing FE folder"
-    gsutil rm gs://cloud-resume-challenge-frontend-bucket
+    gsutil rm -r gs://cloud-resume-challenge-frontend-bucket
 fi
 
 gsutil mb gs://cloud-resume-challenge-frontend-bucket/
