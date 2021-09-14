@@ -5,6 +5,12 @@ terraform {
       version = "~> 3.53"
     }
   }
+
+    backend "gcs" {
+    bucket  = "cloud-resume-challenge-bucket"
+    prefix  = "terraform/state"
+  }
+
 }
 
 provider "google" {}
