@@ -12,9 +12,3 @@ resource "google_project_iam_binding" "service_permissions" {
   depends_on = [google_service_account.cloud_resume_challenge_worker]
 }
 
-resource "google_service_account_key" "SA_key" {
-  service_account_id = google_service_account.cloud_resume_challenge_worker.name
-  public_key_type    = "TYPE_X509_PEM_FILE"
-   depends_on = [google_project_iam_binding.service_permissions]
-}
-
