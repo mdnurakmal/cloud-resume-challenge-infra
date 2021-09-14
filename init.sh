@@ -29,3 +29,20 @@ fi
 cd terraform
 terraform init
 terraform apply -auto-approve -var region=$1
+
+cd ..
+
+gsutil -q stat gs://cloud-resume-challenge-bucket/FE
+
+return_value=$?
+
+if [[ $return_value == 0 ]] 
+then
+    echo "deleting existing FE folder"
+    gsutil rm gs://cloud-resume-challenge-bucket/FE
+fi
+
+
+echo "uploading FE folder"
+
+gsutil cp -r FE gs://cloud-resume-challenge-bucket/
