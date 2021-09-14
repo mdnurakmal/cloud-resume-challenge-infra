@@ -1,5 +1,13 @@
 #!/bin/bash
-terraform --version
+
+gcloud services list --enabled | grep -w "cloudresourcemanager.googleapis.com"
+
+if [[ $? == 0 ]] 
+then
+    echo "cloudresourcemanager not enabled"
+    gcloud services enable cloudresourcemanager.googleapis.com
+fi
+
 
 gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstate
 
