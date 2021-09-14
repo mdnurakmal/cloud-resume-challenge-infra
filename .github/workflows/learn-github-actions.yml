@@ -17,5 +17,7 @@ jobs:
           export_default_credentials: true
 
       - name: Use gcloud CLI
-        run: . ./init.sh ${{ secrets.GCP_REGION }}
+        run: | 
+          chmod +x ./init.sh
+          ./init.sh ${{ secrets.GCP_REGION }}
         
