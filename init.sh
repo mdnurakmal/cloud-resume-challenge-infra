@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-isServiceEnabled=`$(gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com")`
+isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com"`
 
 if [[ $isServiceEnabled == 0 ]] 
 then
