@@ -6,6 +6,8 @@ if [[ $? == 0 ]]
 then
     echo "cloudresourcemanager not enabled"
     gcloud services enable cloudresourcemanager.googleapis.com
+else
+    echo "cloudresourcemanager enabled"
 fi
 
 
