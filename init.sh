@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcloud services list --enabled | grep -w "cloudresourcemanager.googleapis.com"
+gcloud services list --enabled | grep -wc "cloudresourcemanager.googleapis.com"
 
 if [[ $? == 0 ]] 
 then
