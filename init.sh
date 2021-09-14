@@ -47,6 +47,6 @@ echo "uploading FE folder"
 
 gsutil cp -r FE/* gs://cloud-resume-challenge-frontend-bucket/
 
-gsutil iam ch allUsers:legacyObjectReader gs://cloud-resume-challenge-frontend-bucket/index.html
-gsutil iam ch allUsers:objectViewer gs://cloud-resume-challenge-frontend-bucket/index.html
+
+gsutil iam ch allUsers:objectViewer gs://cloud-resume-challenge-frontend-bucket
 gsutil web set -m index.html -e 404.html gs://cloud-resume-challenge-frontend-bucket/
