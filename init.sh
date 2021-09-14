@@ -6,7 +6,7 @@ isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemana
 if [[ $isServiceEnabled == 0 ]] 
 then
     echo "cloudresourcemanager not enabled"
-    gcloud services enable cloudresourcemanager.googleapis.com --project $2
+    gcloud services enable cloudresourcemanager.googleapis.com
 else
     echo "cloudresourcemanager enabled"
 fi
