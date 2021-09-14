@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcloud config set project $1
+gcloud auth activate-service-account "github@$1.iam.gserviceaccount.com" --key-file=$3 --project=$1
 gcloud config set run/region $2
 
 gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstate
