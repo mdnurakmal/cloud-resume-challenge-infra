@@ -32,20 +32,20 @@ terraform apply -auto-approve -var region=$1
 
 cd ..
 
-gsutil -q stat gs://cloud-resume-challenge-bucket/FE
+gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html
 
 return_value=$?
 
 if [[ $return_value == 0 ]] 
 then
     echo "deleting existing FE folder"
-    gsutil rm gs://cloud-resume-challenge-bucket/FE
+    gsutil rm gs://cloud-resume-challenge-frontend-bucket
 fi
 
 
 echo "uploading FE folder"
 
-gsutil cp -r FE gs://cloud-resume-challenge-bucket/
+gsutil cp -r FE gs://cloud-resume-challenge-frontend-bucket/
 
-gsutil iam ch allUsers:objectViewer gs://cloud-resume-challenge-bucket/FE
-gsutil web set -m index.html -e 404.html gs://cloud-resume-challenge-bucket/FE
+gsutil iam ch allUsers:objectViewer gs://cloud-resume-challenge-frontend-bucket/index.html
+gsutil web set -m index.html -e 404.html gs://cloud-resume-challenge-frontend-bucket/
