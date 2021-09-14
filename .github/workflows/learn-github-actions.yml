@@ -4,6 +4,9 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out 
+        uses: actions/checkout@v2
+        
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@master
         with:
