@@ -18,7 +18,7 @@ jobs:
 
       - name: Use gcloud CLI
         run: | 
-          mkrdir FE
+          mkdir FE
           git clone ${{ secrets.FE_GITHUB_URL }} FE
           chmod +x ./init.sh
           ./init.sh ${{ secrets.GCP_REGION }}
