@@ -14,3 +14,17 @@ resource "google_project_service" "cloudresourcemanager" {
   disable_on_destroy = true
 }
 
+resource "google_project_service" "run" {
+  service = "run.googleapis.com"
+  disable_on_destroy = true
+}
+
+resource "google_firestore_index" "counter" {
+
+  collection = "counter"
+
+  fields {
+    field_path = "counter"
+    order      = "ASCENDING"
+  }
+}
