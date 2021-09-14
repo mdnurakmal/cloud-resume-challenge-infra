@@ -1,5 +1,8 @@
 #!/bin/bash
+
 gcloud config set project $1
+gcloud config set run/region $2
+
 gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstate
 
 return_value=$?
@@ -10,3 +13,7 @@ then
 else
     gsutil mb gs://cloud-resume-challenge-bucket
 fi
+
+cd terraform && terraform init
+cd terraform && terraform state pull
+cd terraform && terraform apply -auto-approve -var region=$2
