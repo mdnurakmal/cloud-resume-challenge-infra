@@ -12,6 +12,6 @@ jobs:
 
       - name: Use gcloud CLI
         run: |
-        echo $PWD
-        ./init.sh ${{ secrets.GCP_PROJECT_ID }} ${{ secrets.GCP_REGION }}
+          echo $PWD
+          ./init.sh ${{ secrets.GCP_PROJECT_ID }} ${{ secrets.GCP_REGION }}
         
