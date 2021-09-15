@@ -19,7 +19,7 @@ return_value=$?
 cd terraform
 terraform init -var region=$1 -var path=$2
 
-echo "heree0"
+ls
 echo $2
 
 if [[ $return_value == 0 ]] 
@@ -32,6 +32,7 @@ else
     gsutil mb gs://cloud-resume-challenge-bucket
 fi
 
+ls
 echo $2
 
 
