@@ -16,6 +16,9 @@ gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstat
 
 return_value=$?
 
+cd terraform
+terraform init
+
 if [[ $return_value == 0 ]] 
 then
     echo "bucket exist"
@@ -28,8 +31,7 @@ fi
 
 echo $PWD
 
-cd terraform
-terraform init
+
 terraform apply -auto-approve -var region=$1 -var path=$2
 
 cd ..
