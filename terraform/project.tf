@@ -30,7 +30,12 @@ resource "google_firestore_index" "counter" {
   collection = "counter"
 
   fields {
-    field_path = "counter"
+    field_path = "visitorCounter"
     order      = "ASCENDING"
+  }
+
+  fields {
+    field_path = "description"
+    order      = "DESCENDING"
   }
 }
