@@ -4,14 +4,14 @@ resource "google_storage_bucket" "bucket" {
 
 data "archive_file" "http_trigger" {
   type        = "zip"
-  output_path = "./http_trigger.zip"
-  source_dir = "/BE"
+  output_path = "${path.cwd}/http_trigger.zip"
+  source_dir = "${path.cwd}/BE"
 }
 
 resource "google_storage_bucket_object" "archive" {
   name   = "http_trigger.zip"
   bucket = "${google_storage_bucket.bucket.name}"
-  source = "./http_trigger.zip"
+  source = "${path.cwd}/http_trigger.zip"
   depends_on = [data.archive_file.http_trigger]
 }
 
