@@ -12,6 +12,7 @@ resource "google_service_account_iam_binding" "admin-account-iam" {
   depends_on = [google_service_account.cloud_resume_challenge_worker]
 }
 
+
 resource "google_project_iam_binding" "serviceAccountUser_permmisions" {
 
   role = "roles/iam.serviceAccountUser"
@@ -26,6 +27,14 @@ resource "google_project_iam_binding" "cloudfunctions_permissions" {
   members = [local.cloud_resume_challenge_worker_sa]
   depends_on = [google_project_iam_binding.serviceAccountUser_permmisions]
 }
+
+resource "google_project_iam_binding" "cloudfunctions_permissions2" {
+  role = "roles/cloudfunctions.developer"
+
+  members = ["serviceAccount:github@${local.project}.iam.gserviceaccount.com"]
+  depends_on = [google_project_iam_binding.cloudfunctions_permissions]
+}
+
 
 
 
