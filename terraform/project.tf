@@ -51,4 +51,11 @@ resource "google_firestore_index" "counter" {
     field_path = "description"
     order      = "DESCENDING"
   }
+
+  fields {
+    field_path = "__name__"
+    order      = "DESCENDING"
+  }
+
+  depends_on = [google_app_engine_application.app]
 }
