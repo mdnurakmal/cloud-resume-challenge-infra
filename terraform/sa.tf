@@ -8,7 +8,7 @@ resource "google_service_account_iam_binding" "admin-account-iam" {
   service_account_id = google_service_account.cloud_resume_challenge_worker.name
   role = "roles/iam.serviceAccountUser"
 
-  members = ["github@${var.project}.iam.gserviceaccount.com"]
+  members = ["github@${local.project}.iam.gserviceaccount.com"]
   depends_on = [google_service_account.cloud_resume_challenge_worker]
 }
 
