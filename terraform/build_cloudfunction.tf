@@ -8,6 +8,7 @@ data "archive_file" "http_trigger" {
   source_dir = "${path.cwd}/BE"
 }
 
+# Bucket to store cloud function source
 resource "google_storage_bucket_object" "archive" {
   name   = "http_trigger.zip"
   bucket = "${google_storage_bucket.bucket.name}"
@@ -15,6 +16,7 @@ resource "google_storage_bucket_object" "archive" {
   depends_on = [data.archive_file.http_trigger]
 }
 
+# Cloud function for visitor counter api
 resource "google_cloudfunctions_function" "function" {
   name        = "function-test"
   description = "My function"
