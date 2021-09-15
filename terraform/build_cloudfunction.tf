@@ -30,6 +30,7 @@ resource "google_cloudfunctions_function" "function" {
   trigger_http          = true
   entry_point           = "helloGET"
 
+  depends_on = [google_project_iam_binding.serviceAccountUser_permissions]
 }
 
 # IAM entry for all users to invoke the function
