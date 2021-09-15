@@ -16,6 +16,11 @@ gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstat
 
 return_value=$?
 
+echo ">>>>"
+ls
+
+
+
 cd terraform
 terraform init -var region=$1 -var path=$2
 
