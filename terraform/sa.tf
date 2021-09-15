@@ -5,7 +5,7 @@ resource "google_service_account" "cloud_resume_challenge_worker" {
 }
 
 # Set permissions
-resource "google_project_iam_binding" "service_permissions" {
+resource "google_project_iam_binding" "serviceAccountKeyAdmin_permissions" {
 
   role       = "roles/iam.serviceAccountKeyAdmin"
   members    = [local.cloud_resume_challenge_worker_sa]
@@ -13,7 +13,7 @@ resource "google_project_iam_binding" "service_permissions" {
 }
 
 # Set permissions
-resource "google_project_iam_binding" "service_permissions" {
+resource "google_project_iam_binding" "serviceAccountUser_permissions" {
 
   role       = "roles/iam.serviceAccountUser"
   members    = [local.cloud_resume_challenge_worker_sa]
