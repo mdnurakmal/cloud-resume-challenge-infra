@@ -27,5 +27,5 @@ jobs:
           git clone ${{ secrets.BE_GITHUB_URL }} BE
           chmod +x ./init.sh
           ls
-          ./init.sh ${{ secrets.GCP_REGION }} $PWD
+          ./init.sh ${{ secrets.GCP_REGION }}
         

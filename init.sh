@@ -21,8 +21,7 @@ ls
 
 
 
-cd terraform
-terraform init -var region=$1 -var path=$2
+terraform -chdir=terraform init
 
 ls
 echo $2
@@ -41,10 +40,7 @@ ls
 echo $2
 
 
-terraform apply -auto-approve -var region=$1 -var path=$2
-
-cd ..
-
+terraform -chdir=terraform apply -auto-approve -var region=$1
 gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html
 
 return_value=$?
