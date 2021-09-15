@@ -21,8 +21,8 @@ terraform -chdir=terraform init
 if [[ $return_value == 0 ]] 
 then
     echo "bucket exist"
-    terraform state pull
-    terraform destroy
+    terraform -chdir=terraform state pull
+    terraform -chdir=terraform destroy
 
 else
     gsutil mb gs://cloud-resume-challenge-bucket
