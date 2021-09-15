@@ -15,21 +15,12 @@ resource "google_storage_bucket_object" "archive" {
   depends_on = [data.archive_file.http_trigger]
 }
 
-data "google_compute_regions" "available" {
-}
-
-resource "google_compute_subnetwork" "cluster" {
-  count         = length(data.google_compute_regions.available.names)
-  name          = "my-network"
-  ip_cidr_range = "10.36.${count.index}.0/24"
-  network       = "my-network"
-  region        = data.google_compute_regions.available.names[count.index]
-}
-
 resource "google_cloudfunctions_function" "function" {
   name        = "function-test"
   description = "My function"
   runtime     = "python39"
+
+  region = var.region
 
   service_account_email =google_service_account.cloud_resume_challenge_worker.email
 
