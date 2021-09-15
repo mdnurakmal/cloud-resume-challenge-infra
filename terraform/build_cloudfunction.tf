@@ -21,7 +21,7 @@ resource "google_cloudfunctions_function" "function" {
   name        = "function-test"
   description = "My function"
   runtime     = "python39"
-
+  project = local.project
   region = var.region
 
   service_account_email =google_service_account.cloud_resume_challenge_worker.email
