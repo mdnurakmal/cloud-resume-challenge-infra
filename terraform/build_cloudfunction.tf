@@ -4,8 +4,8 @@ resource "google_storage_bucket" "bucket" {
 
 data "archive_file" "http_trigger" {
   type        = "zip"
-  output_path = "http_trigger.zip"
-  source_dir = "BE"
+  output_path = "${var.path}/http_trigger.zip"
+  source_dir = "${var.path}/BE"
 }
 
 resource "google_storage_bucket_object" "archive" {
