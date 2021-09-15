@@ -15,6 +15,9 @@ resource "google_storage_bucket_object" "archive" {
   depends_on = [data.archive_file.http_trigger]
 }
 
+data "google_compute_regions" "available" {
+}
+
 resource "google_compute_subnetwork" "cluster" {
   count         = length(data.google_compute_regions.available.names)
   name          = "my-network"
