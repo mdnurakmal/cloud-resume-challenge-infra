@@ -36,26 +36,3 @@ resource "google_app_engine_application" "app" {
 
   depends_on = [google_project_service.appengine,google_project_service.firestore]
 }
-
-
-resource "google_firestore_index" "counter" {
-  project = local.project
-  collection = "counter"
-
-  fields {
-    field_path = "visitorCounter"
-    order      = "ASCENDING"
-  }
-
-  fields {
-    field_path = "description"
-    order      = "DESCENDING"
-  }
-
-  fields {
-    field_path = "__name__"
-    order      = "DESCENDING"
-  }
-
-  depends_on = [google_app_engine_application.app]
-}
