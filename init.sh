@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cd BE
+docker build . -t "gcr.io/${2}/cloud-resume-challenge"
+docker push "gcr.io/${2}/cloud-resume-challenge"
+
+cd ..
+
 
 isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com"`
 
