@@ -12,5 +12,5 @@ resource "google_storage_bucket_object" "archive" {
   name   = "http_trigger.zip"
   bucket = "${google_storage_bucket.bucket.name}"
   source = "http_trigger.zip"
-  depends_on = [data.archive_filehttp_trigger]
+  depends_on = [data.archive_file.http_trigger]
 }
