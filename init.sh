@@ -19,6 +19,9 @@ return_value=$?
 cd terraform
 terraform init
 
+echo "heree0"
+echo $2
+
 if [[ $return_value == 0 ]] 
 then
     echo "bucket exist"
