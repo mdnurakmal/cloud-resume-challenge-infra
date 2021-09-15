@@ -40,7 +40,7 @@ ls
 echo $2
 
 
-terraform import google_app_engine_application.app local.project
+terraform -chdir=terraform import google_app_engine_application.app local.project
 terraform -chdir=terraform apply -auto-approve -var region=$1
 gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html
 
