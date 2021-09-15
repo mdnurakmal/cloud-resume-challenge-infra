@@ -39,7 +39,7 @@ resource "google_app_engine_application" "app" {
 
 
 resource "google_firestore_index" "counter" {
-
+  project = local.project
   collection = "counter"
 
   fields {
