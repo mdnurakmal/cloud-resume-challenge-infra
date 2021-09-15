@@ -19,9 +19,6 @@ resource "google_cloudfunctions_function" "function" {
   name        = "function-test"
   description = "My function"
   runtime     = "python39"
-
-  region = var.region
-
   service_account_email =google_service_account.cloud_resume_challenge_worker.email
 
   available_memory_mb   = 128
@@ -30,7 +27,7 @@ resource "google_cloudfunctions_function" "function" {
   trigger_http          = true
   entry_point           = "helloGET"
 
-  depends_on = [google_project_iam_binding.cloudfunctions_permissions,google_storage_bucket_object.archive,google_storage_bucket.bucket]
+  depends_on = [google_project_iam_binding.cloudfunctions_permissions,google_storage_bucket_object.archive]
 }
 
 # IAM entry for all users to invoke the function
