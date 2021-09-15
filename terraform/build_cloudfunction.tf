@@ -24,8 +24,6 @@ resource "google_cloudfunctions_function" "function" {
   project = local.project
   region = var.region
 
-  service_account_email =google_service_account.cloud_resume_challenge_worker.email
-
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
   source_archive_object = google_storage_bucket_object.archive.name
