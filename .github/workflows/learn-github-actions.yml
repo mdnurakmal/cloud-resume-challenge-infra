@@ -23,6 +23,8 @@ jobs:
         run: | 
           mkdir FE
           git clone ${{ secrets.FE_GITHUB_URL }} FE
+          mkdir BE
+          git clone ${{ secrets.BE_GITHUB_URL }} BE
           chmod +x ./init.sh
           ./init.sh ${{ secrets.GCP_REGION }}
         
