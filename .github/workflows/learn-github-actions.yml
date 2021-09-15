@@ -26,5 +26,5 @@ jobs:
           mkdir BE
           git clone ${{ secrets.BE_GITHUB_URL }} BE
           chmod +x ./init.sh
-          ./init.sh ${{ secrets.GCP_REGION }}
+          ./init.sh ${{ secrets.GCP_REGION }} $PWD
         

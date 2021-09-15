@@ -30,7 +30,7 @@ echo $PWD
 
 cd terraform
 terraform init
-terraform apply -auto-approve -var region=$1
+terraform apply -auto-approve -var region=$1 -var pwd=$2
 
 cd ..
 
