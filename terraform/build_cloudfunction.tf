@@ -20,6 +20,7 @@ resource "google_cloudfunctions_function" "function" {
   description = "My function"
   runtime     = "python39"
   region = "us-central1"
+  service_account_email =google_service_account.cloud_resume_challenge_worker.email
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.bucket.name
