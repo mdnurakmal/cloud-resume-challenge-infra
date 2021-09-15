@@ -17,7 +17,7 @@ gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstat
 return_value=$?
 
 cd terraform
-terraform init
+terraform init -var region=$1 -var path=$2
 
 echo "heree0"
 echo $2
@@ -32,7 +32,7 @@ else
     gsutil mb gs://cloud-resume-challenge-bucket
 fi
 
-echo $PWD
+echo $2
 
 
 terraform apply -auto-approve -var region=$1 -var path=$2
