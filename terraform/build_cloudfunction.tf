@@ -30,7 +30,6 @@ resource "google_cloudfunctions_function" "function" {
   trigger_http          = true
   entry_point           = "helloGET"
 
-   depends_on = [google_compute_subnetwork.cluster]
 }
 
 # IAM entry for all users to invoke the function
