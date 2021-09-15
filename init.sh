@@ -16,15 +16,7 @@ gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstat
 
 return_value=$?
 
-echo ">>>>"
-ls
-
-
-
 terraform -chdir=terraform init
-
-ls
-echo $2
 
 if [[ $return_value == 0 ]] 
 then
@@ -36,11 +28,8 @@ else
     gsutil mb gs://cloud-resume-challenge-bucket
 fi
 
-ls
-echo $2
-
-
-terraform -chdir=terraform import google_app_engine_application.app local.project
+#app engine application has been created before hand
+terraform -chdir=terraform import google_app_engine_application.app $2
 terraform -chdir=terraform apply -auto-approve -var region=$1
 gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html
 
