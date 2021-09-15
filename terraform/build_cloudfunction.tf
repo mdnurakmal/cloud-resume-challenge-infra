@@ -30,9 +30,9 @@ resource "google_cloudfunctions_function" "function" {
   source_archive_bucket = google_storage_bucket.bucket.name
   source_archive_object = google_storage_bucket_object.archive.name
   trigger_http          = true
-  entry_point           = "helloGET"
+  entry_point           = "hello_get"
 
-  depends_on = [google_project_iam_binding.cloudfunctions_permissions2,google_storage_bucket_object.archive]
+  depends_on = [google_project_iam_binding.cloudfunctions_permissions1,google_storage_bucket_object.archive]
 }
 
 # IAM entry for all users to invoke the function

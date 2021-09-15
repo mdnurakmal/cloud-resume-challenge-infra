@@ -28,13 +28,6 @@ resource "google_project_iam_binding" "cloudfunctions_permissions" {
   depends_on = [google_project_iam_binding.serviceAccountUser_permmisions]
 }
 
-resource "google_project_iam_binding" "cloudfunctions_permissions2" {
-  role = "roles/cloudfunctions.admin"
-
-  members = ["serviceAccount:github@${local.project}.iam.gserviceaccount.com"]
-  depends_on = [google_project_iam_binding.cloudfunctions_permissions]
-}
-
 
 
 
