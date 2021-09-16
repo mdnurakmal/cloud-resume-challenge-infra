@@ -19,12 +19,8 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
-      - name: GitHub Action for Firebase
-        uses: w9jds/firebase-action@v2.0.0
-        with:
-          args: init firestore
-        env:
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY_ENCODED }}    
+      - name: Edit .firebaserc file
+        run: find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${{ secrets.GCP_PROJECT_ID }}/g' {} \;
 
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v2.0.0
@@ -32,8 +28,6 @@ jobs:
           args: deploy --only firestore:rules
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY_ENCODED }}
-
-
 
       - name: Use gcloud CLI
         run: | 
