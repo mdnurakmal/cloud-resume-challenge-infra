@@ -25,7 +25,7 @@ data "google_iam_policy" "auth" {
   binding {
     role = "roles/run.invoker"
     members = [
-      "allAuthenticatedUsers",
+      "allUsers",
     ]
   }
 }
