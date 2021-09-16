@@ -26,6 +26,7 @@ jobs:
           find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${{ secrets.GCP_PROJECT_ID }}/g' {} \;
 
       - name: GitHub Action for Firebase
+        working-directory: ./firebase
         uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy --only firestore:rules
