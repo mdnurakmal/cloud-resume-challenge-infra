@@ -24,13 +24,24 @@ resource "google_project_iam_binding" "serviceAccountUser_permmisions" {
 }
 
 # cloud function SA is running cloud function as a service account which requires serviceaccountuser permission
-resource "google_project_iam_binding" "firestore_permmisions" {
+resource "google_project_iam_binding" "firebase_permmisions" {
 
   role = "roles/firebase.admin"
 
   members = [local.cloud_resume_challenge_worker_sa]
   depends_on = [google_project_iam_binding.serviceAccountUser_permmisions]
 }
+
+resource "google_project_iam_binding" "firestore_permmisions" {
+
+  role = "roles/firestore.serviceAgent"
+
+  members = [local.cloud_resume_challenge_worker_sa]
+  depends_on = [google_project_iam_binding.firebase_permmisions]
+}
+
+
+
 
 
 
