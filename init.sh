@@ -7,6 +7,8 @@ docker push "gcr.io/${2}/cloud-resume-challenge"
 
 cd ..
 
+firebase deploy --only firestore:rules
+
 
 isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com"`
 
