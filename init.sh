@@ -4,7 +4,7 @@ gcloud auth configure-docker
 cd BE
 docker build . -t "gcr.io/${2}/cloud-resume-challenge"
 docker push "gcr.io/${2}/cloud-resume-challenge"
-dockerSHA=`docker images --no-trunc --quiet "gcr.io/${2}/cloud-resume-challenge:latest"`
+dockerSHA=`gcloud container images describe "gcr.io/${2}/cloud-resume-challenge" --format 'value(image_summary.digest)' | cut -d ':' -f  2`
 echo $dockerSHA
 cd ..
 
