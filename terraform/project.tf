@@ -28,10 +28,17 @@ resource "google_project_service" "appengine" {
   service = "appengine.googleapis.com"
   disable_on_destroy = true
 }
+
 resource "google_project_service" "containerregistry" {
   service = "containerregistry.googleapis.com"
   disable_on_destroy = true
 }
+
+resource "google_project_service" "firebase" {
+  service = "firebase.googleapis.com"
+  disable_on_destroy = true
+}
+
 
 # Create app engine application if it doesnt exists
 resource "google_app_engine_application" "app" {
