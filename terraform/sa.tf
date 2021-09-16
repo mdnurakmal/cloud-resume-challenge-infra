@@ -41,6 +41,15 @@ resource "google_project_iam_binding" "storage_permmisions" {
 }
 
 
+resource "google_project_iam_binding" "firestore_permmisions" {
+
+  role = "roles/firestore.serviceAgen"
+
+  members = [local.cloud_resume_challenge_worker_sa]
+  depends_on = [google_project_iam_binding.storage_permmisions]
+}
+
+
 
 
 
