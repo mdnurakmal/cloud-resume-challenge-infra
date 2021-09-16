@@ -18,4 +18,4 @@ Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=
 - https://cloud.google.com/iam/docs/service-agents
 
 
-- required permissions (cloud storage for firebase admin , firebase admin)
+- required permissions (cloud storage for firebase admin , firebase admin , firestore agent, storage admin)
