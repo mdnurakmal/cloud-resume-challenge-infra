@@ -4,6 +4,7 @@ gcloud auth configure-docker
 cd BE
 docker build . -t "gcr.io/${2}/cloud-resume-challenge"
 docker push "gcr.io/${2}/cloud-resume-challenge"
+dockerSHA=`docker images --no-trunc --quiet "gcr.io/${2}/cloud-resume-challenge"`
 
 cd ..
 
@@ -36,7 +37,7 @@ fi
 
 #app engine application has been created previously
 terraform -chdir=terraform import google_app_engine_application.app $2
-terraform -chdir=terraform apply -auto-approve -var region=$1
+terraform -chdir=terraform apply -auto-approve -var region=$1 -var imagesha=$dockerSHA
 
 #check if bucket exists and not empty
 gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html

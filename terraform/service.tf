@@ -8,7 +8,7 @@ resource "google_cloud_run_service" "cloud-resume-challenge" {
     spec {
       service_account_name = google_service_account.cloud_resume_challenge_worker.email
       containers {
-        image = "gcr.io/${local.project}/${local.service_name}:latest"
+        image = "gcr.io/${local.project}/${local.service_name}:${var.imagesha}"
       }
     }
   }
