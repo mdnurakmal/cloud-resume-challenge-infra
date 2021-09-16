@@ -23,3 +23,14 @@ resource "google_project_iam_binding" "serviceAccountUser_permmisions" {
   depends_on = [google_service_account_iam_binding.admin-account-iam]
 }
 
+# cloud function SA is running cloud function as a service account which requires serviceaccountuser permission
+resource "google_project_iam_binding" "datastore_permmisions" {
+
+  role = "roles/datastore.user"
+
+  members = [local.cloud_resume_challenge_worker_sa]
+  depends_on = [google_project_iam_binding.serviceAccountUser_permmisions]
+}
+
+
+

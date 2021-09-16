@@ -17,7 +17,7 @@ resource "google_cloud_run_service" "cloud-resume-challenge" {
     latest_revision = true
   }
 
-   depends_on = [google_project_iam_binding.serviceAccountUser_permmisions]
+   depends_on = [google_project_iam_binding.datastore_permmisions]
 }
 
 # Set service public
