@@ -23,6 +23,8 @@ jobs:
         uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy --only firestore:rules
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
 
 
 
