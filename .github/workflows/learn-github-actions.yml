@@ -31,7 +31,7 @@ jobs:
           args: deploy --only firestore:rules
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY_ENCODED }}
-        working-directory: ./firebase
+          PROJECT_PATH: ./firebase
 
       - name: Use gcloud CLI
         run: | 
