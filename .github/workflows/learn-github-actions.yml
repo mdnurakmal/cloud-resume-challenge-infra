@@ -20,7 +20,7 @@ jobs:
           export_default_credentials: true
 
       - name: Edit .firebaserc file
-        working-directory: firebase
+        working-directory: ./firebase
         run: find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${{ secrets.GCP_PROJECT_ID }}/g' {} \;
 
       - name: GitHub Action for Firebase
