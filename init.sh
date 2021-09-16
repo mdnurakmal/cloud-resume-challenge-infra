@@ -5,7 +5,7 @@ cd BE
 docker build . -t "gcr.io/${2}/cloud-resume-challenge"
 docker push "gcr.io/${2}/cloud-resume-challenge"
 dockerSHA=`docker images --no-trunc --quiet "gcr.io/${2}/cloud-resume-challenge"`
-
+echo $dockerSHA
 cd ..
 
 isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com"`
