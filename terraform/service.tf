@@ -21,18 +21,18 @@ resource "google_cloud_run_service" "cloud-resume-challenge" {
 }
 
 # Set service public
-data "google_iam_policy" "noauth" {
+data "google_iam_policy" "auth" {
   binding {
     role = "roles/run.invoker"
     members = [
-      "allUsers",
+      "allAuthenticatedUsers",
     ]
   }
 }
 
-resource "google_cloud_run_service_iam_policy" "noauth" {
+resource "google_cloud_run_service_iam_policy" "auth" {
   location = google_cloud_run_service.cloud-resume-challenge.location
   project  = google_cloud_run_service.cloud-resume-challenge.project
   service  = google_cloud_run_service.cloud-resume-challenge.name
-  policy_data = data.google_iam_policy.noauth.policy_data
+  policy_data = data.google_iam_policy.auth.policy_data
 }
