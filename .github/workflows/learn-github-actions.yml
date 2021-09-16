@@ -21,7 +21,9 @@ jobs:
 
       - name: Edit .firebaserc file
         working-directory: ./firebase
-        run: find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${{ secrets.GCP_PROJECT_ID }}/g' {} \;
+        run: |
+          echo $PWD
+          find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${{ secrets.GCP_PROJECT_ID }}/g' {} \;
 
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v2.0.0
