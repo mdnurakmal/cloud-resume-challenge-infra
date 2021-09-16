@@ -49,6 +49,14 @@ resource "google_project_iam_binding" "firestore_permmisions" {
   depends_on = [google_project_iam_binding.storage_permmisions]
 }
 
+resource "google_project_iam_binding" "cloudrun_firebase_permission" {
+
+  role = "roles/firebase.admin"
+
+  members = ["serviceAccount:${local.project_number}-compute@$developer.gserviceaccount.com"]
+
+}
+
 
 
 
