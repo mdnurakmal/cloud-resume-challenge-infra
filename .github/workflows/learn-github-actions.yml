@@ -23,9 +23,7 @@ jobs:
         uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy --only firestore:rules
-        env:
-          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
 
 
       - name: Use gcloud CLI
