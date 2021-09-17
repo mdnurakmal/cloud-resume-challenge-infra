@@ -44,6 +44,11 @@ resource "google_project_service" "apigateway" {
   disable_on_destroy = true
 }
 
+resource "google_project_service" "servicecontrol" {
+  service = "servicecontrol.googleapis.com"
+  disable_on_destroy = true
+}
+
 
 # Create app engine application if it doesnt exists
 resource "google_app_engine_application" "app" {
