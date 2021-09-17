@@ -36,7 +36,7 @@ else
 fi
 
 #app engine application has been created previously
-terraform -chdir=terraform import -var region=$1 google_api_gateway_gateway.gw $2
+terraform -chdir=terraform import google_api_gateway_gateway.gw $2
 terraform -chdir=terraform import google_app_engine_application.app $2
 terraform -chdir=terraform apply -auto-approve -var region=$1 -var imagesha=$dockerSHA
 
