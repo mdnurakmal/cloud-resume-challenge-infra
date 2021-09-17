@@ -45,7 +45,6 @@ resource "google_project_service" "apigateway" {
 }
 
 
-
 # Create app engine application if it doesnt exists
 resource "google_app_engine_application" "app" {
   project = local.project
