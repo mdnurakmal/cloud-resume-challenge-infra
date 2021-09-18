@@ -19,5 +19,12 @@ Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=
 
 Why there is CORS error 
 - https://cloud.google.com/functions/docs/writing/http#functions_http_cors_auth-python
+- https://stackoverflow.com/questions/56919391/is-there-a-way-to-set-imagepullpolicy-for-cloud-run-service
+- https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
+- https://github.com/GoogleCloudPlatform/cloud-builders
+- https://medium.com/google-cloud/terraform-plan-in-pull-requests-with-gcp-cloud-build-603790a2b734
+- https://davidstanke.medium.com/mastering-google-cloud-build-config-syntax-8c3024607daf
 
+- How to secure api ? using auth ?
+- Why static page is still using cached data even when CDN on load balancing is disabled
 - required permissions (cloud storage for firebase admin , firebase admin , firestore agent, storage admin)
