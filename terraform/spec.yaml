@@ -1,19 +1,23 @@
 swagger: '2.0'
 info:
-  title: api-gateway
-  description: API Gateway
+  title: Cloud Endpoints + Cloud Run
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
   version: 1.0.0
+host: CLOUD_RUN_HOSTNAME
 schemes:
   - https
 produces:
   - application/json
+x-google-backend:
+  address: https://cloud-resume-challenge-ouvnbq3x2q-de.a.run.app
+  protocol: h2
 paths:
-  /increment:
+  /hello:
     get:
       summary: Increment visitor count
       operationId: increment
-      x-google-backend:
-        address: https://cloud-resume-challenge-ouvnbq3x2q-de.a.run.app # You need to change this!
       responses:
         '200':
-          description: OK
+          description: A successful response
+          schema:
+            type: string

@@ -17,5 +17,7 @@ Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=
 # Reference
 - https://cloud.google.com/iam/docs/service-agents
 
+Why there is CORS error 
+- https://cloud.google.com/functions/docs/writing/http#functions_http_cors_auth-python
 
 - required permissions (cloud storage for firebase admin , firebase admin , firestore agent, storage admin)
