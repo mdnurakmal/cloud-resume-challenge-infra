@@ -54,6 +54,31 @@ resource "google_project_service" "artifactregistry" {
   disable_on_destroy = true
 }
 
+resource "google_project_service" "serviceusage" {
+  service = "serviceusage.googleapis.com"
+  disable_on_destroy = true
+}
+
+resource "google_project_service" "sourcerepo" {
+  service = "sourcerepo.googleapis.com"
+  disable_on_destroy = true
+}
+
+resource "google_project_service" "firebaserules" {
+  service = "firebaserules.googleapis.com"
+  disable_on_destroy = true
+}
+
+resource "google_project_service" "firebaserules" {
+  service = "domains.googleapis.com"
+  disable_on_destroy = true
+}
+
+resource "google_project_service" "dns" {
+  service = "dns.googleapis.com"
+  disable_on_destroy = true
+}
+
 
 # Create app engine application if it doesnt exists
 resource "google_app_engine_application" "app" {
