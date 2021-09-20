@@ -1,0 +1,38 @@
+steps:
+  - id: "Build community builders image"
+    name: "gcr.io/cloud-builders/git"
+    entrypoint: 'bash'
+    args:
+    - '-c' # pass what follows as a command to bash
+    - |
+      git clone https://github.com/GoogleCloudPlatform/cloud-builders-community
+      cd cloud-builders-community/terraform
+      gcloud builds submit --config cloudbuild.yaml .
+      cd .. 
+      cd cloud-builders-community/firebase
+      gcloud builds submit --config cloudbuild.yaml .
+      cd ..
+
+
+  - id: "Update cloud run service"
+    name: "gcr.io/${PROJECT_ID}/terraform"
+    entrypoint: 'bash'
+    args:
+    - '-c' # pass what follows as a command to bash
+    - |
+      dockerSHA=$(cat /workspace/first.txt)
+      echo $dockerSHA
+
+      terraform -chdir=terraform init
+      terraform -chdir=terraform import google_service_account.cloud_resume_challenge_worker projects/${PROJECT_ID}/serviceAccounts/crc-worker-id@${PROJECT_ID}.iam.gserviceaccount.com
+      terraform -chdir=terraform import google_cloud_run_service.cloud-resume-challenge asia-east1/${PROJECT_ID}/${_SERVICE_NAME}
+      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID} -var imagesha=$dockerSHA
+
+options:
+  logStreamingOption: STREAM_ON
+
+substitutions:
+  _SERVICE_NAME: cloud-resume-challenge
+
+images:
+  - "asia-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}/${_SERVICE_NAME}"
