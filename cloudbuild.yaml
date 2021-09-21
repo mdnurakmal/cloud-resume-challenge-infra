@@ -34,9 +34,9 @@ steps:
     args:
     - '-c'
     - |
-      terraform -chdir=terraform/init init
-      terraform -chdir=terraform/init pull state
-      terraform -chdir=terraform/init apply -auto-approve
+      terraform -chdir=terraform init
+      terraform -chdir=terraform pull state
+      terraform -chdir=terraform apply -auto-approve
 
 
   - id: "Update cloud run service"
