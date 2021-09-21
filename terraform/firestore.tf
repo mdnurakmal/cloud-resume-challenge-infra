@@ -2,7 +2,7 @@ resource "google_firestore_document" "mydoc" {
 
   collection  = "cloud-resume-challenge-collection"
   document_id = "cloud-resume-challenge"
-  fields      = "{\"visitorCount\":{\"mapValue\":{\"fields\":{\"akey\":{\"integerValue\":\"0\"}}}},\"hasInit\":{\"mapValue\":{\"fields\":{\"akey\":{\"booleanValue\":\"False\"}}}}}"
+  fields      = "{\"visitorCount\":{\"mapValue\":{\"fields\":{\"akey\":{\"integerValue\":\"0\"}}}},\"hasInit\":{\"booleanValue\":\"False\"}}"
 
   depends_on = [google_app_engine_application.app]
 }
