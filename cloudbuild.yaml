@@ -14,7 +14,7 @@ steps:
       cd ..
       cd firebase
       find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
-      vi ./.firebaserc
+      cat ./.firebaserc
 
   - id: "Setup firebase"
     name: "gcr.io/${PROJECT_ID}/firebase"
