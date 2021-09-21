@@ -38,7 +38,7 @@ steps:
     - |
       terraform -chdir=terraform init -backend-config="bucket=${PROJECT_NUMBER}-cloud-resume-challenge-bucket"
       terraform -chdir=terraform import google_app_engine_application.app ${PROJECT_ID}
-      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID}
+      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID} -var region=${_REGION}
 
 
 
@@ -57,6 +57,3 @@ options:
 
 substitutions:
   _SERVICE_NAME: cloud-resume-challenge
-
-images:
-  - "asia-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}/${_SERVICE_NAME}"
