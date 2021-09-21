@@ -47,7 +47,7 @@ resource "google_project_service" "containerregistry" {
   disable_on_destroy = true
 
    depends_on = [google_project_iam_binding.cloudbuild_sa_permissions]
-}
+
 }
 
 resource "google_project_service" "firebase" {
