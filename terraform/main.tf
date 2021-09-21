@@ -24,4 +24,5 @@ locals {
   project_number = data.google_project.project.number
   service_name   = "cloud-resume-challenge"
   cloud_resume_challenge_worker_sa  = "serviceAccount:${google_service_account.cloud_resume_challenge_worker.email}"
+  cloud_build_sa ="google_project.project.number@cloudbuild.gserviceaccount.com"
 }
