@@ -35,9 +35,9 @@ steps:
     args:
     - '-c'
     - |
-      terraform -chdir=terraform init
+      terraform -chdir=terraform init -backend-config="bucket=${PROJECT_NUMBER}-cloud-resume-challenge-bucket"
       terraform -chdir=terraform pull state
-      terraform -chdir=terraform apply -auto-approve
+      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID}
 
 
   - id: "Update cloud run service"

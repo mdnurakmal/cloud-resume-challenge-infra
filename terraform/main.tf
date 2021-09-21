@@ -6,15 +6,13 @@ terraform {
     }
   }
 
-    backend "gcs" {
-    bucket  = "403270164945-cloud-resume-challenge-bucket"
-    prefix  = "terraform/state"
-  }
-
 }
 
 
-provider "google" {}
+provider "google" {
+  project     = var.project
+  region      = var.region
+}
 
 data "google_project" "project" {
 }
