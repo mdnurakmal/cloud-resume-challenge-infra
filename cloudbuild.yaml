@@ -23,7 +23,6 @@ steps:
     args:
     - '-c'
     - |
-      gcloud auth list --filter=status:ACTIVE --format="value(account)"
       terraform -chdir=terraform/init init
       terraform -chdir=terraform/init pull state
       terraform -chdir=terraform/init apply -auto-approve
