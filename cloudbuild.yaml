@@ -13,12 +13,13 @@ steps:
       cd firebase
       gcloud builds submit --config cloudbuild.yaml .
       cd ../..
+
       cd firebase
       find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
       cat ./.firebaserc
 
   - id: "Create bucket for terraform state"
-    name: "gcr.io/cloud-builders/git"
+    name: "gcr.io/${PROJECT_ID}/terraform"
     entrypoint: 'bash'
     args:
     - '-c'
