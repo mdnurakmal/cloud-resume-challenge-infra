@@ -7,17 +7,12 @@ terraform {
   }
 
     backend "gcs" {
-  }
-
-}
-
-data "terraform_remote_state" "state" {
-  backend = "gcs"
-  config {
-    bucket  = local.terraform_state_bucket
+    bucket  = "403270164945-cloud-resume-challenge-bucket"
     prefix  = "terraform/state"
   }
+
 }
+
 
 provider "google" {}
 
