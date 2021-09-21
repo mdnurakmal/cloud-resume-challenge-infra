@@ -3,7 +3,7 @@ steps:
     name: "gcr.io/cloud-builders/git"
     entrypoint: 'bash'
     args:
-    - '-c' # pass what follows as a command to bash
+    - '-c'
     - |
       git clone https://github.com/GoogleCloudPlatform/cloud-builders-community
       cd cloud-builders-community/terraform
@@ -21,8 +21,9 @@ steps:
     name: "gcr.io/${PROJECT_ID}/terraform"
     entrypoint: 'bash'
     args:
-    - '-c' # pass what follows as a command to bash
+    - '-c'
     - |
+      gcloud auth list --filter=status:ACTIVE --format="value(account)"
       terraform -chdir=terraform/init init
       terraform -chdir=terraform/init pull state
       terraform -chdir=terraform/init apply -auto-approve
@@ -32,7 +33,7 @@ steps:
     name: "gcr.io/${PROJECT_ID}/terraform"
     entrypoint: 'bash'
     args:
-    - '-c' # pass what follows as a command to bash
+    - '-c' 
     - |
       dockerSHA=`gcloud artifacts docker images list asia-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME} --limit=1 --sort-by=~CREATE_TIME | grep sha256 | cut -d ' ' -f 3`
 
@@ -42,11 +43,11 @@ steps:
       terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID} -var imagesha=$dockerSHA
 
 
-  - id: "Setup firebase"
+  - id: "Setup firebase rules"
     name: "gcr.io/${PROJECT_ID}/firebase"
     entrypoint: 'bash'
     args:
-    - '-c' # pass what follows as a command to bash
+    - '-c' 
     - |
       cd firebase
       firebase deploy --only firestore:rules
