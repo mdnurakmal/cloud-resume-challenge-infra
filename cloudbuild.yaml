@@ -9,6 +9,7 @@ steps:
       cd cloud-builders-community/terraform
       gcloud builds submit --config cloudbuild.yaml .
       cd .. 
+      ls
       cd cloud-builders-community/firebase
       gcloud builds submit --config cloudbuild.yaml .
       cd ..
