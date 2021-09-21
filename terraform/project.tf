@@ -69,7 +69,7 @@ resource "google_project_service" "firebaserules" {
   disable_on_destroy = true
 }
 
-resource "google_project_service" "firebaserules" {
+resource "google_project_service" "domains" {
   service = "domains.googleapis.com"
   disable_on_destroy = true
 }
