@@ -23,8 +23,7 @@ data "google_project" "project" {
 
 locals {
   project = data.google_project.project.project_id
-  terraform_state_bucket = "${local.project_number}-cloud-resume-challenge-bucket"
   project_number = data.google_project.project.number
   service_name   = "cloud-resume-challenge"
-  cloud_build_sa ="google_project.project.number@cloudbuild.gserviceaccount.com"
+  cloud_build_sa ="${data.google_project.project.number}@cloudbuild.gserviceaccount.com"
 }
