@@ -17,6 +17,17 @@ steps:
       find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
       cat ./.firebaserc
 
+  - id: "Enable required GCP APIs"
+    name: "gcr.io/${PROJECT_ID}/terraform"
+    entrypoint: 'bash'
+    args:
+    - '-c' # pass what follows as a command to bash
+    - |
+      terraform -chdir=terraform/init init
+      terraform -chdir=terraform/init pull state
+      terraform -chdir=terraform/init apply -auto-approve
+
+
   - id: "Update cloud run service"
     name: "gcr.io/${PROJECT_ID}/terraform"
     entrypoint: 'bash'
