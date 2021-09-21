@@ -16,13 +16,9 @@ gsutil -q stat gs://$1-cloud-resume-challenge-bucket/terraform/state/default.tfs
 
 return_value=$?
 
-terraform -chdir=terraform init
-
 if [[ $return_value == 0 ]] 
 then
     echo "bucket exist"
-    terraform -chdir=terraform state pull
-    terraform -chdir=terraform destroy -auto-approve
 
 else
     echo "bucket doesnt exist"
