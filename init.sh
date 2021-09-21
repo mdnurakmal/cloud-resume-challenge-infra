@@ -25,5 +25,6 @@ then
     terraform -chdir=terraform destroy
 
 else
+    echo "bucket doesnt exist"
     gsutil mb gs://$1-cloud-resume-challenge-bucket
 fi
