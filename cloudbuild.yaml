@@ -27,7 +27,7 @@ steps:
     - |
       gcloud auth list --filter=status:ACTIVE --format="value(account)"
       chmod +x init.sh 
-      ./init.sh $PROJECT_NUMBER
+      ./init.sh $PROJECT_NUMBER $PROJECT_ID
 
 
   - id: "Enable required GCP APIs"
@@ -37,7 +37,6 @@ steps:
     - '-c'
     - |
       terraform -chdir=terraform init -backend-config="bucket=${PROJECT_NUMBER}-cloud-resume-challenge-bucket" -backend-config="prefix=terraform/state"
-      terraform -chdir=terraform refresh
       terraform -chdir=terraform import google_app_engine_application.app ${PROJECT_ID}
       terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID} -var region=${_REGION}
 

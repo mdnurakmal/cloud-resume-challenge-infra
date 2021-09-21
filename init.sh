@@ -19,6 +19,10 @@ return_value=$?
 if [[ $return_value == 0 ]] 
 then
     echo "bucket exist"
+    terraform -chdir=terraform init -backend-config="bucket=${1}-cloud-resume-challenge-bucket" -backend-config="prefix=terraform/state"
+    terraform -chdir=terraform state pull
+    terraform -chdir=terraform destroy -var project=${2} -var region=${_REGION}
+
 
 else
     echo "bucket doesnt exist"
