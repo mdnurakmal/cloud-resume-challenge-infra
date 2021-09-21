@@ -7,7 +7,7 @@ terraform {
   }
 
     backend "gcs" {
-    bucket  = "cloud-resume-challenge-bucket"
+    bucket  = "${local.project_number}cloud-resume-challenge-bucket"
     prefix  = "terraform/state"
   }
 

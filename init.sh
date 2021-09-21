@@ -19,7 +19,7 @@ else
 fi
 
 
-gsutil -q stat gs://cloud-resume-challenge-bucket/terraform/state/default.tfstate
+gsutil -q stat gs://$1-cloud-resume-challenge-bucket/terraform/state/default.tfstate
 
 return_value=$?
 
@@ -32,7 +32,7 @@ then
     terraform -chdir=terraform destroy
 
 else
-    gsutil mb gs://cloud-resume-challenge-bucket
+    gsutil mb gs://$1-cloud-resume-challenge-bucket
 fi
 
 #app engine application has been created previously
