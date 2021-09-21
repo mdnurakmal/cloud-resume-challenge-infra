@@ -7,7 +7,7 @@ terraform {
   }
 
     backend "gcs" {
-    bucket  = "${local.project_number}cloud-resume-challenge-bucket"
+    bucket  = local.terraform_state_bucket
     prefix  = "terraform/state"
   }
 
@@ -21,6 +21,7 @@ data "google_project" "project" {
 
 locals {
   project = data.google_project.project.project_id
+  terraform_state_bucket = ${local.project_number}-cloud-resume-challenge-bucket
   project_number = data.google_project.project.number
   service_name   = "cloud-resume-challenge"
   cloud_resume_challenge_worker_sa  = "serviceAccount:${google_service_account.cloud_resume_challenge_worker.email}"

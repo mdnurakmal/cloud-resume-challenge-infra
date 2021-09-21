@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# gcloud auth configure-docker
-# cd BE
-# docker build . -t "gcr.io/${2}/cloud-resume-challenge"
-# docker push "gcr.io/${2}/cloud-resume-challenge"
-# dockerSHA=`gcloud container images describe "gcr.io/${2}/cloud-resume-challenge" --format 'value(image_summary.digest)'`
-# echo $dockerSHA
-# cd ..
 
 isServiceEnabled=`gcloud services list --enabled | grep -w -c "cloudresourcemanager.googleapis.com"`
 
@@ -34,30 +27,3 @@ then
 else
     gsutil mb gs://$1-cloud-resume-challenge-bucket
 fi
-
-#app engine application has been created previously
-
-#terraform -chdir=terraform import google_app_engine_application.app $2
-#terraform -chdir=terraform apply -auto-approve -var region=$1 -var imagesha=$dockerSHA
-
-# #check if bucket exists and not empty
-# gsutil -q stat gs://cloud-resume-challenge-frontend-bucket/index.html
-
-# return_value=$?
-
-# if [[ $return_value == 0 ]] 
-# then
-#     echo "deleting existing FE folder"
-#     gsutil rm -r gs://cloud-resume-challenge-frontend-bucket
-# fi
-
-# gsutil mb gs://cloud-resume-challenge-frontend-bucket/
-# echo "uploading FE folder"
-
-# gsutil cp -r FE/* gs://cloud-resume-challenge-frontend-bucket/
-
-# #allow public acess to the bucket
-# gsutil iam ch allUsers:objectViewer gs://cloud-resume-challenge-frontend-bucket
-
-# #set default static page for the bucket
-# gsutil web set -m index.html -e 404.html gs://cloud-resume-challenge-frontend-bucket
