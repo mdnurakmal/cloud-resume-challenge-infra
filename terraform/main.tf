@@ -7,10 +7,16 @@ terraform {
   }
 
     backend "gcs" {
+  }
+
+}
+
+data "terraform_remote_state" "state" {
+  backend = "gcs"
+  config {
     bucket  = local.terraform_state_bucket
     prefix  = "terraform/state"
   }
-
 }
 
 provider "google" {}
