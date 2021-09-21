@@ -1,5 +1,5 @@
 steps:
-  - id: "Build community builders image"
+  - id: "Build community builders image for terraform / firebase"
     name: "gcr.io/cloud-builders/git"
     entrypoint: 'bash'
     args:
@@ -17,8 +17,9 @@ steps:
       cd firebase
       find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
       cat ./.firebaserc
+      
 
-  - id: "Create bucket for terraform state"
+  - id: "Create bucket for terraform state if it doesnt exists"
     name: "gcr.io/${PROJECT_ID}/terraform"
     entrypoint: 'bash'
     args:
@@ -36,23 +37,8 @@ steps:
     - '-c'
     - |
       terraform -chdir=terraform init -backend-config="bucket=${PROJECT_NUMBER}-cloud-resume-challenge-bucket"
-      terraform -chdir=terraform state pull
-      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID}
-
-
-  - id: "Update cloud run service"
-    name: "gcr.io/${PROJECT_ID}/terraform"
-    entrypoint: 'bash'
-    args:
-    - '-c' 
-    - |
-      dockerSHA=`gcloud artifacts docker images list asia-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME} --limit=1 --sort-by=~CREATE_TIME | grep sha256 | cut -d ' ' -f 3`
-
-      terraform -chdir=terraform init
-      terraform -chdir=terraform import google_service_account.cloud_resume_challenge_worker projects/${PROJECT_ID}/serviceAccounts/crc-worker-id@${PROJECT_ID}.iam.gserviceaccount.com
-      terraform -chdir=terraform import google_cloud_run_service.cloud-resume-challenge asia-east1/${PROJECT_ID}/${_SERVICE_NAME}
       terraform -chdir=terraform import google_app_engine_application.app ${PROJECT_ID}
-      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID} -var imagesha=$dockerSHA
+      terraform -chdir=terraform apply -auto-approve -var project=${PROJECT_ID}
 
 
   - id: "Setup firebase rules"
