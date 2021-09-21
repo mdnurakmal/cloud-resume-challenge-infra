@@ -9,10 +9,10 @@ steps:
       cd cloud-builders-community/terraform
       gcloud builds submit --config cloudbuild.yaml .
       cd .. 
-      ls
-      cd cloud-builders-community/firebase
+
+      cd firebase
       gcloud builds submit --config cloudbuild.yaml .
-      cd ..
+      cd ../..
       cd firebase
       find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
       cat ./.firebaserc
