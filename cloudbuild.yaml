@@ -12,7 +12,18 @@ steps:
       cd cloud-builders-community/firebase
       gcloud builds submit --config cloudbuild.yaml .
       cd ..
+      cd firebase
+      find ./.firebaserc -type f -exec sed -i 's/<GCP_PROJECT_ID>/${PROJECT_ID}/g' {} \;
+      vi ./.firebaserc
 
+  - id: "Setup firebase"
+    name: "gcr.io/${PROJECT_ID}/firebase"
+    entrypoint: 'bash'
+    args:
+    - '-c' # pass what follows as a command to bash
+    - |
+      cd firebase
+      firebase deploy --only firestore:rules
 
   - id: "Update cloud run service"
     name: "gcr.io/${PROJECT_ID}/terraform"
