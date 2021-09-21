@@ -22,7 +22,7 @@ if [[ $return_value == 0 ]]
 then
     echo "bucket exist"
     terraform -chdir=terraform state pull
-    terraform -chdir=terraform destroy
+    terraform -chdir=terraform destroy -auto-approve
 
 else
     echo "bucket doesnt exist"

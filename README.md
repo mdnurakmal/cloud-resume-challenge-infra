@@ -25,6 +25,9 @@ Why there is CORS error
 - https://medium.com/google-cloud/terraform-plan-in-pull-requests-with-gcp-cloud-build-603790a2b734
 - https://davidstanke.medium.com/mastering-google-cloud-build-config-syntax-8c3024607daf
 
+Unable to use variable in backend block ?
+- https://github.com/hashicorp/terraform/issues/13022
+
 - How to secure api ? using auth ?
 - Why static page is still using cached data even when CDN on load balancing is disabled
 - required permissions (cloud storage for firebase admin , firebase admin , firestore agent, storage admin)
