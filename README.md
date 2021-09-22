@@ -10,10 +10,6 @@
 Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/mdnurakmal/cloud-resume-challenge-infra.git)
 
 
-# Learning notes
-- Cant use cloud run button because no building of image is needed 
-
-
 # Reference
 - https://cloud.google.com/iam/docs/service-agents
 
@@ -25,7 +21,8 @@ Why there is CORS error
 - https://medium.com/google-cloud/terraform-plan-in-pull-requests-with-gcp-cloud-build-603790a2b734
 - https://davidstanke.medium.com/mastering-google-cloud-build-config-syntax-8c3024607daf
 
-Unable to use variable in backend block ?
+
+- Unable to use variable in terraform backend block ?
 - https://github.com/hashicorp/terraform/issues/13022
 
 - How to secure api ? using auth ?
