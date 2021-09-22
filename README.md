@@ -1,14 +1,19 @@
 # cloud-resume-challenge-infra
 
 # Usage
+Usage after creating new GCP project and enable billing.
 
-1. Create a project in Google Cloud Console
-2. Click 'Run on Google' button
+- Enable Cloud Build API, Cloud Source Repositories API
+- Connect all 3 github repository to CSR
+- - Create Cloud Build Trigger for each repository
+- Set Cloud Build service account to Owner (Only for learning , Fine-grained access control for better security)
+- Manually run all triggers on all repo or push to every repository
 
 
-[![Run on Google
-Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/mdnurakmal/cloud-resume-challenge-infra.git)
-
+The following task/resources requires user intervention to create them.
+- Reserve Static IP Address , Create Zone with custom domain in Cloud DNS
+- Create Google managed SSL Certificate
+- Create Load Balancer and Configure (Backend service, Backend Bucket)
 
 # Reference
 - https://cloud.google.com/iam/docs/service-agents
