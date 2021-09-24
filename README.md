@@ -20,10 +20,6 @@ The following task/resources requires user intervention to create them.
 
 # Reference
 - https://cloud.google.com/iam/docs/service-agents
-
-# Learning Notes
-
-Why there is CORS error 
 - https://cloud.google.com/functions/docs/writing/http#functions_http_cors_auth-python
 - https://stackoverflow.com/questions/56919391/is-there-a-way-to-set-imagepullpolicy-for-cloud-run-service
 - https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values
@@ -31,6 +27,9 @@ Why there is CORS error
 - https://medium.com/google-cloud/terraform-plan-in-pull-requests-with-gcp-cloud-build-603790a2b734
 - https://davidstanke.medium.com/mastering-google-cloud-build-config-syntax-8c3024607daf
 
+# Learning Notes
+
+Why there is CORS error 
 
 - Unable to use variable in terraform backend block ?
 - https://github.com/hashicorp/terraform/issues/13022
