@@ -1,4 +1,7 @@
 # cloud-resume-challenge-infra
+IaC Repository for GCP Cloud Resume Challenge
+
+https://dev.to/mdnurakmal/gcp-cloud-resume-challenge-355g
 
 # Usage
 Usage after creating new GCP project and enable billing.
@@ -17,6 +20,8 @@ The following task/resources requires user intervention to create them.
 
 # Reference
 - https://cloud.google.com/iam/docs/service-agents
+
+# Learning Notes
 
 Why there is CORS error 
 - https://cloud.google.com/functions/docs/writing/http#functions_http_cors_auth-python
